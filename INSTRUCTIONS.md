@@ -33,6 +33,7 @@ npx playwright test --ui
 ```
 
 **Features**:
+
 - Visual test tree with pass/fail indicators
 - Real-time test execution with browser preview
 - Step-by-step test execution
@@ -50,6 +51,7 @@ npx playwright test --debug
 ```
 
 **Usage Tips**:
+
 - Use browser DevTools alongside the inspector
 - Step through actions one at a time
 - Inspect selectors and page state
@@ -66,6 +68,7 @@ npx playwright test tests/functional/auth/auth.spec.ts
 ```
 
 **Example Output**:
+
 ```
 Running 4 tests using 1 worker
   ✓ tests/functional/auth/auth.spec.ts:62:3 › TC1: Should successfully register...
@@ -85,6 +88,7 @@ npx playwright test -g "TC2"
 ```
 
 **Examples**:
+
 ```bash
 # Run tests containing "TC2" in the name
 npx playwright test -g "TC2"
@@ -142,6 +146,7 @@ npx playwright show-report
 ```
 
 **Report Features**:
+
 - Test execution summary with pass/fail counts
 - Detailed test results with execution time
 - Screenshots captured on failure
@@ -175,6 +180,7 @@ npx playwright test --trace on
 ```
 
 **View Trace**:
+
 ```bash
 npx playwright show-trace trace.zip
 ```
@@ -190,6 +196,7 @@ npx playwright test --screenshot=on
 ```
 
 **Screenshot Options**:
+
 - `on` - Capture screenshots for all tests
 - `only-on-failure` - Capture screenshots only when tests fail (default)
 - `off` - Disable screenshots
@@ -205,6 +212,7 @@ npx playwright test --video on
 ```
 
 **Video Options**:
+
 - `on` - Record video for all tests
 - `on-first-retry` - Record video only when retrying failed tests
 - `retain-on-failure` - Keep videos only for failed tests
@@ -273,6 +281,7 @@ npx playwright test --retries=2
 **Problem**: `npx playwright test` command is not recognized.
 
 **Solutions**:
+
 1. Ensure you have run `npm install` in the project root directory
 2. Verify you are in the correct project directory
 3. Check that Node.js and npm are properly installed:
@@ -288,11 +297,13 @@ npx playwright test --retries=2
 **Problem**: Tests fail with browser-related errors.
 
 **Solution**: Reinstall Playwright browsers:
+
 ```bash
 npx playwright install
 ```
 
 For a specific browser:
+
 ```bash
 npx playwright install chromium
 npx playwright install firefox
@@ -306,6 +317,7 @@ npx playwright install webkit
 **Problem**: Tests timeout before completing.
 
 **Solutions**:
+
 1. Increase the timeout in `playwright.config.ts`:
    ```typescript
    use: {
@@ -325,6 +337,7 @@ npx playwright install webkit
 **Problem**: Tests fail with "CSV file does not exist" error.
 
 **Solution**: Ensure the `data/created_users.csv` file exists. The framework will create it automatically on first run, but you can also create it manually with the header:
+
 ```csv
 name,email,password,status
 ```
@@ -343,21 +356,24 @@ name,email,password,status
    - Try running `npx playwright show-report` again after a few seconds
 
 2. **Find and kill the process using port 9323 (Windows):**
+
    ```powershell
    # Find the process using port 9323
    netstat -ano | findstr :9323
-   
+
    # Note the PID from the output, then kill the process
    taskkill /PID <PID> /F
    ```
-   
+
    **Example:**
+
    ```powershell
    # If netstat shows PID 12345
    taskkill /PID 12345 /F
    ```
 
 3. **Use a different port for the report:**
+
    ```bash
    npx playwright show-report --port 9324
    ```
@@ -367,10 +383,11 @@ name,email,password,status
    - Closing and reopening your terminal may release it
 
 5. **Check for multiple Node.js processes:**
+
    ```powershell
    # List all Node.js processes
    tasklist | findstr node
-   
+
    # Kill all Node.js processes (use with caution)
    taskkill /IM node.exe /F
    ```
@@ -381,7 +398,8 @@ name,email,password,status
 
 **Problem**: Environment variables are not being read.
 
-**Solution**: 
+**Solution**:
+
 1. Ensure `.env` file exists in the root directory
 2. Verify `dotenv` is properly configured in your configuration files
 3. Check that variable names match what's expected in the code
@@ -390,17 +408,17 @@ name,email,password,status
 
 ## Quick Reference
 
-| Command | Description |
-|---------|-------------|
-| `npx playwright test` | Run all tests (headless) |
-| `npx playwright test --ui` | Run tests in UI mode |
-| `npx playwright test --debug` | Run tests in debug mode |
-| `npx playwright test tests/auth/auth.spec.ts` | Run specific test file |
-| `npx playwright test -g "TC2"` | Run tests matching pattern |
-| `npx playwright show-report` | View HTML test report |
-| `npx playwright test --headed` | Run tests with visible browser |
-| `npx playwright test --workers=1` | Run tests sequentially |
-| `npx playwright test --list` | List all available tests |
+| Command                                       | Description                    |
+| --------------------------------------------- | ------------------------------ |
+| `npx playwright test`                         | Run all tests (headless)       |
+| `npx playwright test --ui`                    | Run tests in UI mode           |
+| `npx playwright test --debug`                 | Run tests in debug mode        |
+| `npx playwright test tests/auth/auth.spec.ts` | Run specific test file         |
+| `npx playwright test -g "TC2"`                | Run tests matching pattern     |
+| `npx playwright show-report`                  | View HTML test report          |
+| `npx playwright test --headed`                | Run tests with visible browser |
+| `npx playwright test --workers=1`             | Run tests sequentially         |
+| `npx playwright test --list`                  | List all available tests       |
 
 ---
 

@@ -25,12 +25,18 @@ export class NavbarComponent extends BasePage {
     this.homeLink = page.getByRole("link", { name: " Home" });
     this.productsLink = page.getByRole("link", { name: " Products" });
     this.cartLink = page.getByRole("link", { name: " Cart" });
-    this.signupLoginLink = page.getByRole("link", { name: BUTTON_TEXT.SIGNUP_LOGIN });
+    this.signupLoginLink = page.getByRole("link", {
+      name: BUTTON_TEXT.SIGNUP_LOGIN,
+    });
     this.testCasesLink = page.getByRole("link", { name: " Test Cases" });
     this.apiTestingLink = page.getByRole("link", { name: " API Testing" });
-    this.videoTutorialsLink = page.getByRole("link", { name: " Video Tutorials" });
+    this.videoTutorialsLink = page.getByRole("link", {
+      name: " Video Tutorials",
+    });
     this.contactUsLink = page.getByRole("link", { name: " Contact us" });
-    this.deleteAccountLink = page.getByRole("link", { name: BUTTON_TEXT.DELETE_ACCOUNT });
+    this.deleteAccountLink = page.getByRole("link", {
+      name: BUTTON_TEXT.DELETE_ACCOUNT,
+    });
     this.logoutLink = page.getByRole("link", { name: BUTTON_TEXT.LOGOUT });
     this.loggedInAsText = page.locator("a:has-text('Logged in as')");
   }

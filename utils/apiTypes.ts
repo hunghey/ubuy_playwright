@@ -1,6 +1,6 @@
 /**
  * TypeScript Types and Interfaces for Automation Exercise API
- * 
+ *
  * This file contains all type definitions for API requests and responses
  * to ensure type safety and better code documentation.
  */
@@ -18,14 +18,14 @@ export enum ResponseCode {
 }
 
 export enum ResponseMessage {
-  USER_EXISTS = 'User exists!',
-  USER_NOT_FOUND = 'User not found!',
-  USER_CREATED = 'User created!',
-  ACCOUNT_DELETED = 'Account deleted!',
-  USER_UPDATED = 'User updated!',
-  METHOD_NOT_SUPPORTED = 'This request method is not supported.',
-  BAD_REQUEST_SEARCH = 'Bad request, search_product parameter is missing in POST request.',
-  BAD_REQUEST_LOGIN = 'Bad request, email or password parameter is missing in POST request.',
+  USER_EXISTS = "User exists!",
+  USER_NOT_FOUND = "User not found!",
+  USER_CREATED = "User created!",
+  ACCOUNT_DELETED = "Account deleted!",
+  USER_UPDATED = "User updated!",
+  METHOD_NOT_SUPPORTED = "This request method is not supported.",
+  BAD_REQUEST_SEARCH = "Bad request, search_product parameter is missing in POST request.",
+  BAD_REQUEST_LOGIN = "Bad request, email or password parameter is missing in POST request.",
 }
 
 // =============================================================================
@@ -99,7 +99,7 @@ export interface CreateAccountRequest {
   name: string;
   email: string;
   password: string;
-  title: 'Mr' | 'Mrs' | 'Miss';
+  title: "Mr" | "Mrs" | "Miss";
   birth_date: string;
   birth_month: string;
   birth_year: string;

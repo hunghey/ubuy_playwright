@@ -26,13 +26,21 @@ export class SignupPage extends BasePage {
 
   constructor(page: Page, siteConfig: SiteConfig) {
     super(page, siteConfig);
-    this.newUserSignupHeading = page.getByRole("heading", { name: UI_TEXT.NEW_USER_SIGNUP });
+    this.newUserSignupHeading = page.getByRole("heading", {
+      name: UI_TEXT.NEW_USER_SIGNUP,
+    });
     this.nameInput = page.getByPlaceholder(FORM_LABELS.NAME);
-    this.emailSignUpInput = page.locator(`input[data-qa="${DATA_QA_ATTRIBUTES.SIGNUP_EMAIL}"]`);
+    this.emailSignUpInput = page.locator(
+      `input[data-qa="${DATA_QA_ATTRIBUTES.SIGNUP_EMAIL}"]`,
+    );
     this.signupButton = page.getByRole("button", { name: BUTTON_TEXT.SIGNUP });
     this.signInButton = page.getByRole("button", { name: BUTTON_TEXT.LOGIN });
-    this.emailSignInInput = page.locator(`input[data-qa="${DATA_QA_ATTRIBUTES.LOGIN_EMAIL}"]`);
-    this.passwordSignInInput = page.locator(`input[data-qa="${DATA_QA_ATTRIBUTES.LOGIN_PASSWORD}"]`);
+    this.emailSignInInput = page.locator(
+      `input[data-qa="${DATA_QA_ATTRIBUTES.LOGIN_EMAIL}"]`,
+    );
+    this.passwordSignInInput = page.locator(
+      `input[data-qa="${DATA_QA_ATTRIBUTES.LOGIN_PASSWORD}"]`,
+    );
     this.signupError = page.locator(".signup-form p");
     this.loginError = page.locator(".login-form p");
   }
@@ -75,7 +83,6 @@ export class SignupPage extends BasePage {
    */
   async clickLogin(): Promise<void> {
     await this.signInButton.click();
-  
   }
 
   async verifySignupError(message: string): Promise<void> {

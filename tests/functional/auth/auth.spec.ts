@@ -15,7 +15,7 @@ test.describe("User Authentication & Management Tests", () => {
       signupPage: import("../../../pages/SignupPage").SignupPage;
       accountInfoPage: import("../../../pages/AccountInfoPage").AccountInfoPage;
       accountCreatedPage: import("../../../pages/AccountCreatedPage").AccountCreatedPage;
-    }
+    },
   ): Promise<void> {
     const { homePage, signupPage, accountInfoPage, accountCreatedPage } = pages;
 
@@ -43,7 +43,7 @@ test.describe("User Authentication & Management Tests", () => {
       dashboardPage: import("../../../pages/DashboardPage").DashboardPage;
       deleteAccountPage: import("../../../pages/DeleteAccountPage").DeleteAccountPage;
       homePage: import("../../../pages/HomePage").HomePage;
-    }
+    },
   ): Promise<void> {
     const { signupPage, dashboardPage, deleteAccountPage, homePage } = pages;
 
@@ -87,7 +87,7 @@ test.describe("User Authentication & Management Tests", () => {
         signupPage,
         dashboardPage,
         deleteAccountPage,
-        homePage
+        homePage,
       });
     });
   });
@@ -126,7 +126,7 @@ test.describe("User Authentication & Management Tests", () => {
         signupPage,
         dashboardPage,
         deleteAccountPage,
-        homePage
+        homePage,
       });
     });
   });
@@ -157,7 +157,9 @@ test.describe("User Authentication & Management Tests", () => {
     await test.step("Attempt login with invalid password", async () => {
       await signupPage.fillLoginForm(user.email, TEST_DATA.INVALID_PASSWORD);
       await signupPage.clickLogin();
-      await signupPage.verifyLoginError(ERROR_MESSAGES.LOGIN_INVALID_CREDENTIALS);
+      await signupPage.verifyLoginError(
+        ERROR_MESSAGES.LOGIN_INVALID_CREDENTIALS,
+      );
     });
 
     await test.step("Re-login and delete account", async () => {
@@ -165,7 +167,7 @@ test.describe("User Authentication & Management Tests", () => {
         signupPage,
         dashboardPage,
         deleteAccountPage,
-        homePage
+        homePage,
       });
     });
   });

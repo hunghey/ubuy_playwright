@@ -1,23 +1,22 @@
 import { faker } from "@faker-js/faker";
 import { generatePassword } from "../test-data/api/users.generator";
 import { UIUserData } from "./uiTypes";
-  // =============================================================================
+// =============================================================================
 // User Account Types
 // =============================================================================
 
-
 export function generateUserAccountData(
-  overrides?: Partial<UIUserData>
+  overrides?: Partial<UIUserData>,
 ): UIUserData {
   const firstName = faker.person.firstName();
   const lastName = faker.person.lastName();
-  
+
   return {
     firstname: firstName,
     lastname: lastName,
     name: `${firstName} ${lastName}`,
     email: faker.internet.email({
-    provider: "example.test",
+      provider: "example.test",
     }),
     password: generatePassword(),
     gender: faker.helpers.arrayElement(["Mr.", "Mrs."]),
@@ -29,7 +28,13 @@ export function generateUserAccountData(
     company: faker.company.name(),
     address1: faker.location.streetAddress(),
     address2: faker.location.secondaryAddress(),
-    country: faker.helpers.arrayElement(["India", "United States", "Canada", "Australia", "Singapore"]),
+    country: faker.helpers.arrayElement([
+      "India",
+      "United States",
+      "Canada",
+      "Australia",
+      "Singapore",
+    ]),
     zipcode: faker.location.zipCode(),
     state: faker.location.state(),
     city: faker.location.city(),

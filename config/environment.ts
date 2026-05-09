@@ -6,5 +6,5 @@ export interface SiteConfig {
 }
 
 export const automationExerciseConfig: SiteConfig = {
-  baseUrl: "https://automationexercise.com"
+  baseUrl: "https://automationexercise.com",
 };

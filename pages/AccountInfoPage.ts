@@ -44,25 +44,59 @@ export class AccountInfoPage extends BasePage {
     this.enterAccountInfoHeading = page.getByText(UI_TEXT.ENTER_ACCOUNT_INFO);
     this.genderMrRadio = page.getByRole("radio", { name: GENDER_OPTIONS.MR });
     this.genderMrsRadio = page.getByRole("radio", { name: GENDER_OPTIONS.MRS });
-    this.passwordInput = page.locator(`input[data-qa="${DATA_QA_ATTRIBUTES.PASSWORD}"]`);
-    this.dayOfBirthSelect = page.locator(`select[data-qa="${DATA_QA_ATTRIBUTES.DAYS}"]`);
-    this.monthOfBirthSelect = page.locator(`select[data-qa="${DATA_QA_ATTRIBUTES.MONTHS}"]`);
-    this.yearOfBirthSelect = page.locator(`select[data-qa="${DATA_QA_ATTRIBUTES.YEARS}"]`);
-    this.newsletterCheckbox = page.getByRole("checkbox", { name: FORM_LABELS.NEWSLETTER });
-    this.specialOffersCheckbox = page.getByRole("checkbox", { name: FORM_LABELS.SPECIAL_OFFERS });
+    this.passwordInput = page.locator(
+      `input[data-qa="${DATA_QA_ATTRIBUTES.PASSWORD}"]`,
+    );
+    this.dayOfBirthSelect = page.locator(
+      `select[data-qa="${DATA_QA_ATTRIBUTES.DAYS}"]`,
+    );
+    this.monthOfBirthSelect = page.locator(
+      `select[data-qa="${DATA_QA_ATTRIBUTES.MONTHS}"]`,
+    );
+    this.yearOfBirthSelect = page.locator(
+      `select[data-qa="${DATA_QA_ATTRIBUTES.YEARS}"]`,
+    );
+    this.newsletterCheckbox = page.getByRole("checkbox", {
+      name: FORM_LABELS.NEWSLETTER,
+    });
+    this.specialOffersCheckbox = page.getByRole("checkbox", {
+      name: FORM_LABELS.SPECIAL_OFFERS,
+    });
 
     // Address Information locators
-    this.firstNameInput = page.locator(`input[data-qa="${DATA_QA_ATTRIBUTES.FIRST_NAME}"]`);
-    this.lastNameInput = page.locator(`input[data-qa="${DATA_QA_ATTRIBUTES.LAST_NAME}"]`);
-    this.companyInput = page.locator(`input[data-qa="${DATA_QA_ATTRIBUTES.COMPANY}"]`);
-    this.addressInput = page.locator(`input[data-qa="${DATA_QA_ATTRIBUTES.ADDRESS}"]`);
-    this.address2Input = page.locator(`input[data-qa="${DATA_QA_ATTRIBUTES.ADDRESS_2}"]`);
-    this.countrySelect = page.locator(`select[data-qa="${DATA_QA_ATTRIBUTES.COUNTRY}"]`);
-    this.stateInput = page.locator(`input[data-qa="${DATA_QA_ATTRIBUTES.STATE}"]`);
-    this.cityInput = page.locator(`input[data-qa="${DATA_QA_ATTRIBUTES.CITY}"]`);
-    this.zipcodeInput = page.locator(`input[data-qa="${DATA_QA_ATTRIBUTES.ZIPCODE}"]`);
-    this.mobileNumberInput = page.locator(`input[data-qa="${DATA_QA_ATTRIBUTES.MOBILE_NUMBER}"]`);
-    this.createAccountButton = page.getByRole("button", { name: BUTTON_TEXT.CREATE_ACCOUNT });
+    this.firstNameInput = page.locator(
+      `input[data-qa="${DATA_QA_ATTRIBUTES.FIRST_NAME}"]`,
+    );
+    this.lastNameInput = page.locator(
+      `input[data-qa="${DATA_QA_ATTRIBUTES.LAST_NAME}"]`,
+    );
+    this.companyInput = page.locator(
+      `input[data-qa="${DATA_QA_ATTRIBUTES.COMPANY}"]`,
+    );
+    this.addressInput = page.locator(
+      `input[data-qa="${DATA_QA_ATTRIBUTES.ADDRESS}"]`,
+    );
+    this.address2Input = page.locator(
+      `input[data-qa="${DATA_QA_ATTRIBUTES.ADDRESS_2}"]`,
+    );
+    this.countrySelect = page.locator(
+      `select[data-qa="${DATA_QA_ATTRIBUTES.COUNTRY}"]`,
+    );
+    this.stateInput = page.locator(
+      `input[data-qa="${DATA_QA_ATTRIBUTES.STATE}"]`,
+    );
+    this.cityInput = page.locator(
+      `input[data-qa="${DATA_QA_ATTRIBUTES.CITY}"]`,
+    );
+    this.zipcodeInput = page.locator(
+      `input[data-qa="${DATA_QA_ATTRIBUTES.ZIPCODE}"]`,
+    );
+    this.mobileNumberInput = page.locator(
+      `input[data-qa="${DATA_QA_ATTRIBUTES.MOBILE_NUMBER}"]`,
+    );
+    this.createAccountButton = page.getByRole("button", {
+      name: BUTTON_TEXT.CREATE_ACCOUNT,
+    });
   }
 
   /**
@@ -77,10 +111,9 @@ export class AccountInfoPage extends BasePage {
    * @param userData - User data object containing account information
    */
   async fillAccountInformation(userData: UIUserData): Promise<void> {
-    if(userData.gender === GENDER_OPTIONS.MR){
+    if (userData.gender === GENDER_OPTIONS.MR) {
       await this.genderMrRadio.check();
-    }
-    else{
+    } else {
       await this.genderMrsRadio.check();
     }
     await this.passwordInput.fill(userData.password);

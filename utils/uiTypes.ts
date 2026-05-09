@@ -1,6 +1,6 @@
 /**
  * TypeScript Types and Interfaces for Automation Exercise UI
- * 
+ *
  * UI specific types that differ from API types
  */
 

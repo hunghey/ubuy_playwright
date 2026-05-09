@@ -1,14 +1,14 @@
 /**
  * API Client Utility for Automation Exercise API Testing
- * 
+ *
  * This class provides a reusable interface for making API calls
  * with consistent error handling and response validation.
  */
 
-import { APIRequestContext, APIResponse, expect } from '@playwright/test';
+import { APIRequestContext, APIResponse, expect } from "@playwright/test";
 
 export class ApiClient {
-  private baseUrl: string = 'https://automationexercise.com/api';
+  private baseUrl: string = "https://automationexercise.com/api";
 
   constructor(private request: APIRequestContext) {}
 
@@ -18,7 +18,10 @@ export class ApiClient {
    * @param params - Optional query parameters
    * @returns APIResponse object
    */
-  async get(endpoint: string, params?: Record<string, string>): Promise<APIResponse> {
+  async get(
+    endpoint: string,
+    params?: Record<string, string>,
+  ): Promise<APIResponse> {
     const url = `${this.baseUrl}${endpoint}`;
     return await this.request.get(url, { params });
   }
@@ -29,7 +32,10 @@ export class ApiClient {
    * @param data - Request payload (form data)
    * @returns APIResponse object
    */
-  async post(endpoint: string, data?: Record<string, any>): Promise<APIResponse> {
+  async post(
+    endpoint: string,
+    data?: Record<string, any>,
+  ): Promise<APIResponse> {
     const url = `${this.baseUrl}${endpoint}`;
     return await this.request.post(url, {
       form: data,
@@ -42,7 +48,10 @@ export class ApiClient {
    * @param data - Request payload (form data)
    * @returns APIResponse object
    */
-  async put(endpoint: string, data?: Record<string, any>): Promise<APIResponse> {
+  async put(
+    endpoint: string,
+    data?: Record<string, any>,
+  ): Promise<APIResponse> {
     const url = `${this.baseUrl}${endpoint}`;
     return await this.request.put(url, {
       form: data,
@@ -55,7 +64,10 @@ export class ApiClient {
    * @param data - Request payload (form data)
    * @returns APIResponse object
    */
-  async delete(endpoint: string, data?: Record<string, any>): Promise<APIResponse> {
+  async delete(
+    endpoint: string,
+    data?: Record<string, any>,
+  ): Promise<APIResponse> {
     const url = `${this.baseUrl}${endpoint}`;
     return await this.request.delete(url, {
       form: data,
@@ -67,7 +79,10 @@ export class ApiClient {
    * @param response - API response
    * @param expectedStatus - Expected HTTP status code
    */
-  async validateStatusCode(response: APIResponse, expectedStatus: number): Promise<void> {
+  async validateStatusCode(
+    response: APIResponse,
+    expectedStatus: number,
+  ): Promise<void> {
     expect(response.status()).toBe(expectedStatus);
   }
 
@@ -76,7 +91,10 @@ export class ApiClient {
    * @param response - API response
    * @param expectedText - Expected text in response body
    */
-  async validateResponseText(response: APIResponse, expectedText: string): Promise<void> {
+  async validateResponseText(
+    response: APIResponse,
+    expectedText: string,
+  ): Promise<void> {
     const responseText = await response.text();
     expect(responseText).toContain(expectedText);
   }
@@ -113,9 +131,12 @@ export class ApiClient {
    * @param array - Array to validate
    * @param fieldName - Name of the field (for error messages)
    */
-  validateArrayNotEmpty(array: any[], fieldName: string = 'array'): void {
+  validateArrayNotEmpty(array: any[], fieldName: string = "array"): void {
     expect(array, `${fieldName} should not be empty`).toBeTruthy();
-    expect(array.length, `${fieldName} should have at least one item`).toBeGreaterThan(0);
+    expect(
+      array.length,
+      `${fieldName} should have at least one item`,
+    ).toBeGreaterThan(0);
   }
 
   /**
@@ -124,7 +145,7 @@ export class ApiClient {
    * @param requiredProperties - Array of required property names
    */
   validateObjectProperties(obj: any, requiredProperties: string[]): void {
-    requiredProperties.forEach(prop => {
+    requiredProperties.forEach((prop) => {
       expect(obj).toHaveProperty(prop);
     });
   }
@@ -143,7 +164,10 @@ export class ApiClient {
    * @param responseBody - Parsed JSON response body
    * @param expectedMessage - Expected response message
    */
-  softValidateResponseMessage(responseBody: any, expectedMessage: string): void {
+  softValidateResponseMessage(
+    responseBody: any,
+    expectedMessage: string,
+  ): void {
     expect.soft(responseBody.message).toBe(expectedMessage);
   }
 }

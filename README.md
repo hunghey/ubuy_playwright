@@ -6,7 +6,7 @@
 
 ## Introduction
 
-This repository contains a professional **Hybrid Automation Framework** (API & UI) built with **Playwright** and **TypeScript**. 
+This repository contains a professional **Hybrid Automation Framework** (API & UI) built with **Playwright** and **TypeScript**.
 
 The framework is designed for scalability and reliability, implementing **Page Object Model (POM)**, **Custom Fixtures**, and **Data-Driven Testing**. It supports distinct testing layers: API, Functional (UI), and End-to-End (E2E) flows.
 
@@ -56,17 +56,20 @@ PlaywrightMCp/
 ### Setup Instructions
 
 1. **Clone the repository:**
+
    ```bash
    git clone <repository-url>
    cd PlaywrightMCp
    ```
 
 2. **Install dependencies:**
+
    ```bash
    npm install
    ```
 
 3. **Install Playwright Browsers:**
+
    ```bash
    npx playwright install chromium --with-deps
    ```
@@ -80,24 +83,31 @@ PlaywrightMCp/
 ## Running Tests
 
 ### 🔌 API Tests
+
 Fast, lightweight tests for endpoint verification and contracts.
+
 ```bash
 npx playwright test tests/api/
 ```
 
 ### 🧪 Functional Tests
+
 UI-based tests focused on specific features (Auth, Cart, etc.).
+
 ```bash
 npx playwright test tests/functional/
 ```
 
 ### 🚀 E2E Tests
+
 Full purchase flows and long user journeys.
+
 ```bash
 npx playwright test tests/e2e/
 ```
 
 ### Miscellaneous Commands
+
 - **Run all tests**: `npx playwright test`
 - **Interactive UI Mode**: `npx playwright test --ui`
 - **Debug Mode**: `npx playwright test --debug`
@@ -106,6 +116,7 @@ npx playwright test tests/e2e/
 ## CI/CD Pipeline
 
 The framework uses GitHub Actions (`.github/workflows/playwright.yml`) with the following logic:
+
 - **Push/Pull Request**: Triggers the full suite on `main`.
 - **Scheduled**: Runs daily at 6 AM UTC.
 - **Jobs**:

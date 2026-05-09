@@ -14,7 +14,9 @@ export class DeleteAccountPage extends BasePage {
   constructor(page: Page, siteConfig: SiteConfig) {
     super(page, siteConfig);
     this.accountDeletedHeading = page.getByText(UI_TEXT.ACCOUNT_DELETED);
-    this.continueButton = page.getByRole("link", { name: BUTTON_TEXT.CONTINUE });
+    this.continueButton = page.getByRole("link", {
+      name: BUTTON_TEXT.CONTINUE,
+    });
   }
 
   /**

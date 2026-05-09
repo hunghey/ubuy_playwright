@@ -19,7 +19,7 @@ export async function saveUserToCSV(
   name: string,
   email: string,
   password: string,
-  filePath: string = "test-data/created_users.csv"
+  filePath: string = "test-data/created_users.csv",
 ): Promise<void> {
   try {
     const absolutePath = path.resolve(filePath);
@@ -62,21 +62,27 @@ export async function saveUserToCSV(
  * @returns User credentials object { name, email, password }
  * @throws Error if no available users or file doesn't exist
  */
-export function getUser(filePath: string = "data/created_users.csv"): UserCredentials {
+export function getUser(
+  filePath: string = "data/created_users.csv",
+): UserCredentials {
   try {
     const absolutePath = path.resolve(filePath);
 
     // Check if file exists
     if (!fs.existsSync(absolutePath)) {
-      throw new Error(`CSV file does not exist: ${absolutePath}. Please create users first.`);
+      throw new Error(
+        `CSV file does not exist: ${absolutePath}. Please create users first.`,
+      );
     }
 
     // Read file content
     const fileContent = fs.readFileSync(absolutePath, "utf-8");
-    const lines = fileContent.split("\n").filter(line => line.trim() !== "");
+    const lines = fileContent.split("\n").filter((line) => line.trim() !== "");
 
     if (lines.length <= 1) {
-      throw new Error("CSV file is empty or contains only headers. No users available.");
+      throw new Error(
+        "CSV file is empty or contains only headers. No users available.",
+      );
     }
 
     // Parse all users
@@ -86,16 +92,16 @@ export function getUser(filePath: string = "data/created_users.csv"): UserCreden
     for (let i = 1; i < lines.length; i++) {
       // Match CSV pattern: "name","email","password",status
       const match = lines[i].match(/"([^"]*)","([^"]*)","([^"]*)",(.*)$/);
-      
+
       if (match) {
         const status = match[4].trim();
         const user: UserCredentials = {
           name: match[1],
           email: match[2],
           password: match[3],
-          status: status
+          status: status,
         };
-        
+
         users.push(user);
 
         // Find first available user (status is empty)
@@ -107,7 +113,9 @@ export function getUser(filePath: string = "data/created_users.csv"): UserCreden
 
     // Check if any available user found
     if (availableUserIndex === -1) {
-      throw new Error("No available users with empty status. All users have been used.");
+      throw new Error(
+        "No available users with empty status. All users have been used.",
+      );
     }
 
     // Update status to 'used'
@@ -115,7 +123,7 @@ export function getUser(filePath: string = "data/created_users.csv"): UserCreden
 
     // Rebuild CSV content
     let newContent = "name,email,password,status\n";
-    users.forEach(user => {
+    users.forEach((user) => {
       newContent += `"${user.name}","${user.email}","${user.password}",${user.status}\n`;
     });
 
@@ -129,7 +137,7 @@ export function getUser(filePath: string = "data/created_users.csv"): UserCreden
     return {
       name: selectedUser.name,
       email: selectedUser.email,
-      password: selectedUser.password
+      password: selectedUser.password,
     };
   } catch (error) {
     console.error("Error getting user from CSV:", error);
@@ -142,7 +150,9 @@ export function getUser(filePath: string = "data/created_users.csv"): UserCreden
  * @param filePath - Optional custom file path (defaults to data/created_users.csv)
  * @returns Array of user credentials
  */
-export function readUsersFromCSV(filePath: string = "data/created_users.csv"): UserCredentials[] {
+export function readUsersFromCSV(
+  filePath: string = "data/created_users.csv",
+): UserCredentials[] {
   try {
     const absolutePath = path.resolve(filePath);
 
@@ -152,7 +162,7 @@ export function readUsersFromCSV(filePath: string = "data/created_users.csv"): U
     }
 
     const fileContent = fs.readFileSync(absolutePath, "utf-8");
-    const lines = fileContent.split("\n").filter(line => line.trim() !== "");
+    const lines = fileContent.split("\n").filter((line) => line.trim() !== "");
 
     // Skip header row and parse data
     const users: UserCredentials[] = [];
@@ -163,7 +173,7 @@ export function readUsersFromCSV(filePath: string = "data/created_users.csv"): U
           name: match[1],
           email: match[2],
           password: match[3],
-          status: match[4].trim()
+          status: match[4].trim(),
         });
       }
     }

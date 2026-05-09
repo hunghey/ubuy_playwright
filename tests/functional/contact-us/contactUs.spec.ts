@@ -20,7 +20,7 @@ test.describe("Contact Us Form - Functional Tests", () => {
   // ─────────────────────────────────────────────────────────────
   test("TC-CU-001: Should submit contact form successfully with file upload", async ({
     homePage,
-    contactUsPage
+    contactUsPage,
   }) => {
     // Test data - dùng Faker để tạo dữ liệu ngẫu nhiên mỗi lần chạy
     const contactData = {

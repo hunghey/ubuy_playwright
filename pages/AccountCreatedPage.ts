@@ -15,9 +15,13 @@ export class AccountCreatedPage extends BasePage {
   constructor(page: Page, siteConfig: SiteConfig) {
     super(page, siteConfig);
     this.accountCreatedHeading = page.getByText(UI_TEXT.ACCOUNT_CREATED);
-    this.continueButton = page.getByRole("link", { name: BUTTON_TEXT.CONTINUE });
+    this.continueButton = page.getByRole("link", {
+      name: BUTTON_TEXT.CONTINUE,
+    });
     this.adFrame = page.frameLocator('iframe[id*="aswift"]').first();
-    this.closeAdButton = this.adFrame.locator('div[aria-label="Close ad"]').first();
+    this.closeAdButton = this.adFrame
+      .locator('div[aria-label="Close ad"]')
+      .first();
   }
 
   /**
